@@ -1,7 +1,11 @@
 package com.example.weather3dwallpaper.weather;
 
 import android.content.Context;
+import android.net.Uri;
+import com.example.weather3dwallpaper.R;
 import com.example.weather3dwallpaper.preferences.AppPreferencesProxy;
+
+import java.net.URL;
 
 public class WeatherUIHandler {
     
@@ -17,14 +21,16 @@ public class WeatherUIHandler {
         this.appPreferencesProxy = appPreferencesProxy;
     }
 
-    public String getAdequateVideoToShow(){
+    public Uri getAdequateVideoToShow(){
         
         var lastInfo = weatherInformationAPI.getLastInformation();
         var flatCurrentInfo = appPreferencesProxy.get("currentWeatherInfo");
         var currentInfo = fromJson(flatCurrentInfo);
         
         if(nonDownload(lastInfo, currentInfo)){
-            return appPreferencesProxy.get("currentWeatherVideoFile");
+            return Uri.parse(
+                    appPreferencesProxy.get("currentWeatherVideoFile")
+            );
         }
         
         return videoDownloader.startDownload();
@@ -44,6 +50,10 @@ public class WeatherUIHandler {
                 "",
                 0L
         );
+    }
+    
+    private Uri getFallbackVideoUri(){
+        return Uri.parse("android.resource://" + context.getPackageName() + "/" + R.raw.pollito2);
     }
     
 }
