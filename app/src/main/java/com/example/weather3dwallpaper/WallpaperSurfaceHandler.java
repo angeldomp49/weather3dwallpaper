@@ -32,8 +32,8 @@ public class WallpaperSurfaceHandler {
     
     public void drawFrame(Canvas canvas, Paint pencil){
         Log.i("drawFrameWallpaperSurfaceHandler", "Before Video Wallpaper Playing");
-        surfaceTexture.updateTexImage();
-        canvas.drawColor(Color.BLACK);
+//        surfaceTexture.updateTexImage();
+//        canvas.drawColor(Color.BLACK);
 
         surfaceTexture.setDefaultBufferSize(canvas.getWidth(), canvas.getHeight());
 
@@ -47,6 +47,10 @@ public class WallpaperSurfaceHandler {
     public boolean isAnyZeroOrNegativeMesure(Canvas canvas){
         return canvas.getWidth() <= 0 ||
                 canvas.getHeight() <= 0;
+    }
+    
+    public void updateTexImage(){
+        surfaceTexture.updateTexImage();
     }
     
     
