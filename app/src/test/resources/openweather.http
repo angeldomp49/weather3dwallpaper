@@ -1,12 +1,20 @@
 
-@apikey = 434a74cf495d6919c9bea33c0cd74ca9;
-@lat = 19.50619;
-@lon = -99.1966848;
+@apikey = 434a74cf495d6919c9bea33c0cd74ca9
+@apikey2 = d978c13f09759ea6b8f8d092869ed05e
+@lat = 19.50619
+@lon = -99.1966848
 
 ### GET request to the Open Weather API FREE!!
 GET http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID={{apikey}}
 
 ###
+
+
+### GET request to the Open Weather API FREE!!
+GET http://api.openweathermap.org/data/2.5/weather?lat={{lat}}&lon={{lon}}&APPID={{apikey}}
+
+###
+
 
 ### GET request to the Open Weather API
 GET https://api.openweathermap.org/data/3.0/onecall?lat={{lat}}&lon={{lon}}&appid={{apikey}}
