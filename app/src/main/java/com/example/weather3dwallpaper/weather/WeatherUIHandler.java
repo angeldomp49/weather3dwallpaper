@@ -13,23 +13,26 @@ public class WeatherUIHandler {
     private final WeatherVideoDownloader videoDownloader;
     private final Context context;
     private final AppPreferencesProxy appPreferencesProxy;
+    private final String fallbackVideoUri;
 
     public WeatherUIHandler(WeatherInformationAPI weatherInformationAPI, WeatherVideoDownloader videoDownloader, Context context, AppPreferencesProxy appPreferencesProxy) {
         this.weatherInformationAPI = weatherInformationAPI;
         this.videoDownloader = videoDownloader;
         this.context = context;
         this.appPreferencesProxy = appPreferencesProxy;
+        this.fallbackVideoUri = "android.resource://" + context.getPackageName() + "/" + R.raw.pollito2;
     }
 
     public Uri getAdequateVideoToShow(){
         
         var lastInfo = weatherInformationAPI.getLastInformation();
-        var flatCurrentInfo = appPreferencesProxy.get("currentWeatherInfo");
-        var currentInfo = fromJson(flatCurrentInfo);
+        var flatCurrentInfo = appPreferencesProxy.get("currentWeatherInfo", "{}");
+        var currentInfo = fromJson(flatCurrentInfo.blockingFirst());
         
         if(nonDownload(lastInfo, currentInfo)){
             return Uri.parse(
-                    appPreferencesProxy.get("currentWeatherVideoFile")
+                    appPreferencesProxy.get("currentWeatherVideoFile", fallbackVideoUri)
+                            .blockingFirst()
             );
         }
         
@@ -50,10 +53,6 @@ public class WeatherUIHandler {
                 "",
                 0L
         );
-    }
-    
-    private Uri getFallbackVideoUri(){
-        return Uri.parse("android.resource://" + context.getPackageName() + "/" + R.raw.pollito2);
     }
     
 }
