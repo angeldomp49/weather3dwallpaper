@@ -24,7 +24,7 @@ public class WallPaperEntryPointClass extends WallpaperService {
     public class WallpaperEngine extends Engine {
         
         private ExoPlayer exoPlayer;
-        private Handler handler = new Handler(Looper.getMainLooper());
+        private final Handler handler = new Handler(Looper.getMainLooper());
         private Paint pencil = new Paint();
         private boolean isVisible;
         private final Runnable drawRunnable = () -> {
@@ -109,24 +109,8 @@ public class WallPaperEntryPointClass extends WallpaperService {
             
             try {
                 
-//                wallpaperSurfaceHandler.updateTexImage();
                 canvas = getSurfaceHolder().lockCanvas();
                 canvas.drawColor(Color.BLACK);
-//                
-//                var bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.rainy_city);
-//
-//                var srcRect = new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());
-//                var destRect = new Rect(0, 0, canvas.getWidth(), canvas.getHeight());
-//
-//                // Draw the bitmap onto the canvas, scaling it to fill the screen
-//                canvas.drawBitmap(bitmap, srcRect, destRect, pencil);
-//
-//                wallpaperSurfaceHandler.drawFrame(canvas, pencil);
-//
-//                if(wallpaperSurfaceHandler.isAnyZeroOrNegativeMesure(canvas) || mediaResourcesHandler.isAnyMediaMeasureZero()){
-//                    Log.e(WallpaperEngine.class.getName(), "Any measure for canvas or media player is zero");
-//                    return;
-//                }
                 
                 
                 

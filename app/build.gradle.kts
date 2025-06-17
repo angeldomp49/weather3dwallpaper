@@ -49,4 +49,6 @@ dependencies {
     implementation(libs.androidx.media3.ui)
     implementation(libs.jackson.databind)
     implementation(libs.jackson.core)
+
+    implementation(libs.androidx.datastore.preferences.core)
 }
