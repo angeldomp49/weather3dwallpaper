@@ -1,23 +1,14 @@
 package com.example.weather3dwallpaper;
 
 import android.graphics.*;
-import android.net.Uri;
-import android.os.Handler;
-import android.os.Looper;
 import android.service.wallpaper.WallpaperService;
-import android.util.Log;
 import android.view.SurfaceHolder;
-import androidx.media3.common.MediaItem;
-import androidx.media3.common.PlaybackException;
-import androidx.media3.common.Player;
-import androidx.media3.exoplayer.ExoPlayer;
 import com.example.weather3dwallpaper.media.MediaPlayerProxy;
 import com.example.weather3dwallpaper.preferences.AppPreferencesProxy;
-import com.example.weather3dwallpaper.weather.WeatherInformationAPI;
+import com.example.weather3dwallpaper.storage.VideoFileStorageProxy;
+import com.example.weather3dwallpaper.weather.api.WeatherInformationAPI;
 import com.example.weather3dwallpaper.weather.WeatherUIHandler;
-import com.example.weather3dwallpaper.weather.WeatherVideoDownloader;
-
-import java.util.Objects;
+import com.example.weather3dwallpaper.weather.api.WeatherVideoDownloader;
 
 public class WallPaperEntryPointClass extends WallpaperService {
     
@@ -41,9 +32,11 @@ public class WallPaperEntryPointClass extends WallpaperService {
             
             this.weatherUIHandler = new WeatherUIHandler(
                     new WeatherInformationAPI(),
-                    new WeatherVideoDownloader(),
-                    getApplicationContext(),
-                    new AppPreferencesProxy(getApplicationContext())
+                    new WeatherVideoDownloader(
+                            new VideoFileStorageProxy(getApplicationContext())
+                    ),
+                    new AppPreferencesProxy(getApplicationContext()),
+                    getApplicationContext()
             );
             
             this.mediaPlayerProxy = new MediaPlayerProxy(getApplicationContext(), holder);

@@ -1,0 +1,4 @@
+### GET weather information from custom server
+GET https://merv3tibspr64sl2ya74tqf4sq0eksus.lambda-url.us-east-2.on.aws/
+
+###

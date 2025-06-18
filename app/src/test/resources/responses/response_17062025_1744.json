@@ -1,0 +1,48 @@
+{
+  "coord": {
+    "lon": -99.1967,
+    "lat": 19.5062
+  },
+  "weather": [
+    {
+      "id": 500,
+      "main": "Rain",
+      "description": "light rain",
+      "icon": "10d"
+    }
+  ],
+  "base": "stations",
+  "main": {
+    "temp": 293.12,
+    "feels_like": 292.97,
+    "temp_min": 293.05,
+    "temp_max": 293.15,
+    "pressure": 1011,
+    "humidity": 69,
+    "sea_level": 1011,
+    "grnd_level": 762
+  },
+  "visibility": 8047,
+  "wind": {
+    "speed": 5.14,
+    "deg": 280
+  },
+  "rain": {
+    "1h": 0.88
+  },
+  "clouds": {
+    "all": 75
+  },
+  "dt": 1750203845,
+  "sys": {
+    "type": 2,
+    "id": 2097454,
+    "country": "MX",
+    "sunrise": 1750161519,
+    "sunset": 1750209417
+  },
+  "timezone": -21600,
+  "id": 3514633,
+  "name": "Vista Hermosa",
+  "cod": 200
+}
